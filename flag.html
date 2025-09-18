@@ -1,0 +1,48 @@
+<!-- flag.html -->
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Super Secure Farm — Nəticə</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="farm">
+  <header class="site-header small">
+    <div class="logo">🌾 Super Secure Farm</div>
+    <nav>
+      <a href="index.html">Ana</a>
+      <a href="about.html">Haqqında</a>
+      <a href="login.html" class="btn">Ferma Paneli</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="flagArea" class="flag-card">
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Super Secure Farm — Təhlükəsiz idarəetmə vacibdir</p>
+  </footer>
+
+  <script>
+    const area = document.getElementById('flagArea');
+    if (sessionStorage.getItem('ssf_logged_in') === '1') {
+      area.innerHTML = `
+        <h2>Uğurla daxil oldunuz</h2>
+        <p>Ferma idarə panelinə giriş təsdiqləndi.</p>
+        <p class="muted">Nümunə flag:</p>
+	<p class="flag">FLAG{ferma_hacked}</p>
+        <a href="index.html" class="btn">Ana səhifəyə qayıt</a>
+      `;
+    } else {
+      area.innerHTML = `
+        <h2>İcazəsiz giriş</h2>
+        <p>Bu səhifəyə giriş üçün əvvəlcə <a href="login.html">giriş</a> edin.</p>
+      `;
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,68 @@
+<!-- login.html -->
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Super Secure Farm — Ferma Paneli</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="farm">
+  <header class="site-header small">
+    <div class="logo">🌾 Super Secure Farm</div>
+    <nav>
+      <a href="index.html">Ana</a>
+      <a href="about.html">Haqqında</a>
+      <a href="login.html" class="btn">Ferma Paneli</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="login-card">
+      <h2>Ferma idarə panelinə giriş</h2>
+      <p>Burada qərarverici məlumatlara giriş mümkündür. Xahiş olunur düzgün giriş məlumatlarından istifadə edin.</p>
+
+      <form id="loginForm" onsubmit="return doLogin(event)">
+        <label for="user">İstifadəçi adı</label>
+        <input id="user" name="user" placeholder="İstifadəçi adını yazın" required>
+
+        <label for="pass">Parol</label>
+        <input id="pass" name="pass" type="password" placeholder="Parolu yazın" required>
+
+        <button type="submit" class="btn primary">Giriş et</button>
+        <div id="message" aria-live="polite" class="message"></div>
+      </form>
+
+      <div class="hint">
+        <strong>Qeyd:</strong> İstifadəçi adı aydın göründüyü üçün, parolun təhlükəsiz saxlanılması vacibdir.
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Super Secure Farm — İdarəetmə</p>
+  </footer>
+
+  <script>
+    // Demo yoxlaması: username = admin123  password = admin123
+    function doLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById('user').value.trim();
+      const pass = document.getElementById('pass').value;
+
+      const msg = document.getElementById('message');
+      msg.textContent = '';
+
+      if (user === 'admin123' && pass === 'admin123') {
+        sessionStorage.setItem('ssf_logged_in', '1');
+        window.location.href = 'flag.html';
+      } else {
+        msg.textContent = 'Yanlış istifadəçi adı və ya parol. Yenidən cəhd edin.';
+        msg.classList.add('error');
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>
+
